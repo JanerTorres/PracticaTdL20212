@@ -5,4 +5,4 @@ Proyecto para el desarrollo de la primera práctica del curso Teoría de Lenguaj
 
 Integrantes del proyecto: 
 - Daniel Restrepo 
-- - Jhon J. Torres
+- Jhon J. Torres
