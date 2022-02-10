@@ -15,10 +15,10 @@ public class Automata {
     private List<Character> simbolosEntrada;
     private List<Estado> estados;
     private Estado estadoInicial; // Se guarda únicamente la posición del estado inicial de la lista de estados que ya fueron definidos
-    private List<Transicion> transiciones;
+    private List<TransicionD> transiciones;
     private boolean esDeterministico;
 
-    public Automata(List<Character> simbolosEntrada, List<Estado> estados, Estado estadoInicial, List<Transicion> transiciones, boolean esDeterministico) {
+    public Automata(List<Character> simbolosEntrada, List<Estado> estados, Estado estadoInicial, List<TransicionD> transiciones, boolean esDeterministico) {
         this.simbolosEntrada = simbolosEntrada;
         this.estados = estados;
         this.estadoInicial = estadoInicial;
@@ -45,7 +45,7 @@ public class Automata {
     // Cuando se vayan a agregar las transiciones, la idea es que se recorra la lista de los estados
     // con el fin de extraer los datos más facilmente.
     public void agregarTransicion(Estado actual, Estado siguiente, Character simbolo){
-        transiciones.add(new Transicion(actual, siguiente, simbolo));
+        transiciones.add(new TransicionD(actual, siguiente, simbolo));
     }
     
     
@@ -82,11 +82,11 @@ public class Automata {
         this.estadoInicial = estadoInicial;
     }
 
-    public List<Transicion> getTransiciones() {
+    public List<TransicionD> getTransiciones() {
         return transiciones;
     }
 
-    public void setTransiciones(List<Transicion> transiciones) {
+    public void setTransiciones(List<TransicionD> transiciones) {
         this.transiciones = transiciones;
     }
 

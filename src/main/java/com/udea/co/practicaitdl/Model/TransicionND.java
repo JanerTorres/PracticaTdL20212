@@ -4,29 +4,27 @@
  */
 package com.udea.co.practicaitdl.Model;
 
+import java.util.List;
+
 /**
  *
  * @author USUARIO
  */
-public class Transicion {
+public class TransicionND {
     
     private Estado actual;
-    private Estado siguiente;
+    private List<Estado> siguientes;
     private char simbolo;
 
-    public Transicion(Estado actual, Estado siguiente, char simbolo) {
+    public TransicionND(Estado actual, char simbolo) {
         this.actual = actual;
-        this.siguiente = siguiente;
         this.simbolo = simbolo;
     }
-
-    public char getSimbolo() {
-        return simbolo;
+    
+    public void addSiguiente(Estado estado){
+        this.siguientes.add(estado);
     }
-
-    public void setSimbolo(char simbolo) {
-        this.simbolo = simbolo;
-    }
+    
 
     public Estado getActual() {
         return actual;
@@ -36,15 +34,21 @@ public class Transicion {
         this.actual = actual;
     }
 
-    public Estado getSiguiente() {
-        return siguiente;
+    public List<Estado> getSiguientes() {
+        return siguientes;
     }
 
-    public void setSiguiente(Estado siguiente) {
-        this.siguiente = siguiente;
+    public void setSiguientes(List<Estado> siguientes) {
+        this.siguientes = siguientes;
     }
 
-    
+    public char getSimbolo() {
+        return simbolo;
+    }
+
+    public void setSimbolo(char simbolo) {
+        this.simbolo = simbolo;
+    }    
     
     
 }
