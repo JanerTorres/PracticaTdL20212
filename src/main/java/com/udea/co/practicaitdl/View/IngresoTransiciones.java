@@ -100,7 +100,7 @@ public class IngresoTransiciones extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Si está en el estado:");
 
-        jBtnEntrar.setText("Entrar en el mismo símbolo");
+        jBtnEntrar.setText("Entrar y mantener el mismo simbolo");
         jBtnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jBtnEntrar.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jBtnEntrar.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +128,7 @@ public class IngresoTransiciones extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("¿A qué estado pasa?");
 
-        jButton1.setText("Entrar Siguiente");
+        jButton1.setText("Entrar y cambiar de símbolo");
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,7 +165,7 @@ public class IngresoTransiciones extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jBtnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGap(113, 113, 113)))
-                    .addComponent(jButton1))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(

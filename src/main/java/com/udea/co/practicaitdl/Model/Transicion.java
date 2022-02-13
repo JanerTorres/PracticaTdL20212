@@ -8,13 +8,13 @@ package com.udea.co.practicaitdl.Model;
  *
  * @author USUARIO
  */
-public class TransicionD {
+public class Transicion {
     
     private Estado actual;
     private Estado siguiente;
     private char simbolo;
 
-    public TransicionD(Estado actual, Estado siguiente, char simbolo) {
+    public Transicion(Estado actual, Estado siguiente, char simbolo) {
         this.actual = actual;
         this.siguiente = siguiente;
         this.simbolo = simbolo;
