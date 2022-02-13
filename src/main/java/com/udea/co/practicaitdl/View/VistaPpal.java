@@ -146,8 +146,7 @@ public class VistaPpal extends javax.swing.JFrame {
     private void jBtnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEntrarActionPerformed
         
         automata.agregarSimbolo(jTxtFSimbolos.getText().charAt(0));
-        
-        
+        jTxtFSimbolos.setText("");
     }//GEN-LAST:event_jBtnEntrarActionPerformed
 
     private void jBtnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnFinalizarActionPerformed

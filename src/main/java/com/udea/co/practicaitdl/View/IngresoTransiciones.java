@@ -17,21 +17,23 @@ public class IngresoTransiciones extends javax.swing.JFrame {
      * Creates new form VistaPpal
      */
 
+    // Variables de indices usadas para controlar la iteración para el guardado de cada transición
+    int indEstados = 0, indSimbolos = 0;
     
     public IngresoTransiciones() {
         initComponents();
         
         List <Estado> estados = VistaPpal.automata.getEstados();
-         
         
+        
+        jComboEstados.addItem("");
+        // Agregación de estados al Select para elegir el Estado Final de la transición
         for (Estado e: estados) {
-            
             jComboEstados.addItem(e.getNombre());
-            
         }
         
-        jLblEInicial.setText(estados.get(0).getNombre());
-        jLblSdeE.setText(text);
+        this.actualizarInfo();
+        
         
     }
 
@@ -58,6 +60,7 @@ public class IngresoTransiciones extends javax.swing.JFrame {
         jLblEInicial = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jComboEstados = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,7 +68,8 @@ public class IngresoTransiciones extends javax.swing.JFrame {
         jLabel2.setText("Bienvenidos");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Texto introductorio a la aplicación.");
+        jLabel3.setText("Idea: \"A continuación puede ingresar las transiciones para su Autómata Determinístico/No Desterminístico");
+        jLabel3.setVerifyInputWhenFocusTarget(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -74,13 +78,12 @@ public class IngresoTransiciones extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(156, 156, 156)
-                        .addComponent(jLabel2)
-                        .addGap(0, 202, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)))
+                .addContainerGap(21, Short.MAX_VALUE))
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel1Layout.setVerticalGroup(
@@ -89,15 +92,17 @@ public class IngresoTransiciones extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                .addGap(3, 3, 3)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Si está en el estado:");
 
-        jBtnEntrar.setText("Entrar");
+        jBtnEntrar.setText("Entrar en el mismo símbolo");
+        jBtnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jBtnEntrar.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jBtnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnEntrarActionPerformed(evt);
@@ -111,13 +116,25 @@ public class IngresoTransiciones extends javax.swing.JFrame {
             }
         });
 
+        jLblSdeE.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLblSdeE.setText("jLabel4");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("y entra el simbolo:");
 
+        jLblEInicial.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLblEInicial.setText("jLabel7");
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("¿A qué estado pasa?");
+
+        jButton1.setText("Entrar Siguiente");
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -127,26 +144,28 @@ public class IngresoTransiciones extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(61, 61, 61)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLblEInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLblSdeE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(18, 18, 18)
                         .addComponent(jComboEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jBtnEntrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnFinalizar))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLblSdeE)))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jBtnFinalizar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(61, 61, 61)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLblEInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jBtnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(113, 113, 113)))
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -166,10 +185,12 @@ public class IngresoTransiciones extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jComboEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBtnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addComponent(jBtnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBtnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,25 +205,69 @@ public class IngresoTransiciones extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    public void guardarInfoTransicion(){
+        // Obtenemos el Estado que fue seleccionado
+        Estado estadoFinal = VistaPpal.automata.getEstados().get(jComboEstados.getSelectedIndex() - 1);
+        // Obtenemos el Estado Incial que corresponde a dicha transición
+        Estado estadoInicial = VistaPpal.automata.getEstados().get(indEstados);
+        // Obetenemos el símbolo responsable de dicha transición
+        char simbolo = VistaPpal.automata.getSimbolosEntrada().get(indSimbolos);
+        // Guardamos la transición con los valores correspondientes
+        VistaPpal.automata.agregarTransicion(estadoInicial, estadoFinal, simbolo);
+    }
+    
+    public void actualizarInfo(){
+        jLblEInicial.setText(VistaPpal.automata.getEstados().get(indEstados).getNombre());
+        jLblSdeE.setText(VistaPpal.automata.getSimbolosEntrada().get(indSimbolos).toString());
+    }
+    
     private void jBtnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEntrarActionPerformed
-        
-        List <Estado> estados = VistaPpal.automata.getEstados();
-        Estado estadoFinal = estados.get(jComboEstados.getSelectedIndex());
-        Estado estadoInicial = 
-        
-        VistaPpal.automata.agregarTransicion(jLblEInicial.getText(), estadoFinal, jLblSdeE.getText());
-        
+        // -- Método para guardar la transición pero seguir guardando en el mismo símbolo
+        this.guardarInfoTransicion();
+        // indices de estado y de simbolo se conservan
+        jComboEstados.setSelectedIndex(0);
     }//GEN-LAST:event_jBtnEntrarActionPerformed
 
     private void jBtnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnFinalizarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnFinalizarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // -- Método para guardar la transición y avanzar en el siguiente simbolo y/o estado
+        this.guardarInfoTransicion();
+        // Se actualizan los indices para registrar una transición diferente
+        if(indSimbolos == VistaPpal.automata.getSimbolosEntrada().size() - 1){
+            // Verificamos si ya terminó de registrar las transiciones para todos los simbolos
+            // Posterior a esto se determina si avanza en simbolo o en estado
+            if(indEstados == VistaPpal.automata.getEstados().size() - 1){
+                // Se desactivan los botones, ya que no se puede entrar más transiciones
+                jButton1.setEnabled(false);
+                jBtnEntrar.setEnabled(false);
+                jComboEstados.setEnabled(false);
+            }
+            else{
+                indSimbolos = 0;
+                indEstados++;
+            }
+            
+        }
+        else{
+            indSimbolos++;
+        }
+        
+        this.actualizarInfo();
+        jComboEstados.setSelectedIndex(0);
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,6 +310,7 @@ public class IngresoTransiciones extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnEntrar;
     private javax.swing.JButton jBtnFinalizar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboEstados;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

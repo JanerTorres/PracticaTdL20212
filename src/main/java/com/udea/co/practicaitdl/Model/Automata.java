@@ -4,6 +4,7 @@
  */
 package com.udea.co.practicaitdl.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,6 +29,9 @@ public class Automata {
 
     public Automata() {
         this.esDeterministico = true;
+        this.simbolosEntrada = new ArrayList<Character>();
+        this.estados = new ArrayList<Estado>();
+        this.transiciones = new ArrayList<TransicionD>();
     }
     
     // LA IDEA ES QUE CUANDO SE CREE EL AUTOMATA, SEA VACIÓ. Y POR DEFECTO SERÁ DETERMINISTICO, MIENTRAS NO SE CAMBIE

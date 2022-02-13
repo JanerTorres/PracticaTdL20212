@@ -37,7 +37,7 @@ public class IngresoEstados extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTxtFSimbolos = new javax.swing.JTextField();
+        jTxtFEstados = new javax.swing.JTextField();
         jBtnEntrar = new javax.swing.JButton();
         jBtnFinalizar = new javax.swing.JButton();
         jCBoxAcept = new javax.swing.JCheckBox();
@@ -80,7 +80,7 @@ public class IngresoEstados extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Ingrese los estados");
 
-        jTxtFSimbolos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTxtFEstados.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         jBtnEntrar.setText("Entrar");
         jBtnEntrar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +113,7 @@ public class IngresoEstados extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTxtFSimbolos, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTxtFEstados, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jBtnEntrar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -129,7 +129,7 @@ public class IngresoEstados extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTxtFSimbolos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTxtFEstados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCBoxAcept))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -158,13 +158,16 @@ public class IngresoEstados extends javax.swing.JFrame {
 
     private void jBtnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEntrarActionPerformed
         
-        VistaPpal.automata.agregarEstado(jTxtFSimbolos.getText(), jCBoxAcept.isSelected());
-        
+        VistaPpal.automata.agregarEstado(jTxtFEstados.getText(), jCBoxAcept.isSelected());
+        jTxtFEstados.setText("");
         
     }//GEN-LAST:event_jBtnEntrarActionPerformed
 
     private void jBtnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnFinalizarActionPerformed
         // TODO add your handling code here:
+        IngresoTransiciones ingresoTransiciones = new IngresoTransiciones();
+        ingresoTransiciones.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jBtnFinalizarActionPerformed
 
     private void jCBoxAceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBoxAceptActionPerformed
@@ -217,6 +220,6 @@ public class IngresoEstados extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTxtFSimbolos;
+    private javax.swing.JTextField jTxtFEstados;
     // End of variables declaration//GEN-END:variables
 }
