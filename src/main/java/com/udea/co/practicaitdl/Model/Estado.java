@@ -10,11 +10,11 @@ package com.udea.co.practicaitdl.Model;
  */
 public class Estado {
     
-    private String valor;
+    private String nombre;
     private boolean aceptacion;
 
     public Estado(String valor, boolean aceptacion) {
-        this.valor = valor;
+        this.nombre = valor;
         this.aceptacion = aceptacion;
     }
 
@@ -26,12 +26,12 @@ public class Estado {
         this.aceptacion = aceptacion;
     }
 
-    public String getValor() {
-        return valor;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setValor(String valor) {
-        this.valor = valor;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     
