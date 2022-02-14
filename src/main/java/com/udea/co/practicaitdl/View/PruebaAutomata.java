@@ -5,6 +5,7 @@
 package com.udea.co.practicaitdl.View;
 
 import com.udea.co.practicaitdl.AutomataController;
+import com.udea.co.practicaitdl.Model.Estado;
 import com.udea.co.practicaitdl.Model.Transicion;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +21,13 @@ public class PruebaAutomata extends javax.swing.JFrame {
     /**
      * Creates new form PruebaAutomata
      */
+    AutomataController automataController = new AutomataController();
+    Estado actual = VistaPpal.automata.getEstadoInicial();
+
     public PruebaAutomata() {
         initComponents();
+        
+        
     }
 
     /**
@@ -88,7 +94,7 @@ public class PruebaAutomata extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        char[] entrada = null;
+        char[] entrada = new char[jTxtFEntrada.getText().length()];
         jTxtFEntrada.getText().getChars(0,jTxtFEntrada.getText().length(),entrada,0);
         
         if (entrada != null) {        
@@ -100,22 +106,22 @@ public class PruebaAutomata extends javax.swing.JFrame {
             }
         }
         
-        List<Transicion> ruta = AutomataController.reconocer(entrada);
+        List<Transicion> ruta = this.reconocer(entrada);
         
         for (int i = 0; i < ruta.size(); i++) {
             
-            jTxtA.append(ruta.get(i).getActual().getNombre() + ("(") + ruta.get(i).getSimbolo() + (") ==> ") + ruta.get(i).getSiguiente().getNombre());
+            jTxtA.append(ruta.get(i).getActual().getNombre() + ("(") + ruta.get(i).getSimbolo() + (") ==> ") + ruta.get(i).getSiguiente().getNombre() + " \n");
             
         }
         
         if (ruta.get(ruta.size()-1).getSiguiente().isAceptacion()) {
             
-            jTxtA.append("");
-            jTxtA.append("Hilera aceptada por el automata!!");
+            jTxtA.append("\n");
+            jTxtA.append("Hilera aceptada por el automata!!\n");
                 
             }else{
-            jTxtA.append("");
-            jTxtA.append("Hilera rechazada por el automata.");
+            jTxtA.append("\n");
+            jTxtA.append("Hilera rechazada por el automata.\n");
         }
         
         
@@ -156,6 +162,27 @@ public class PruebaAutomata extends javax.swing.JFrame {
                 new PruebaAutomata().setVisible(true);
             }
         });
+    }
+    
+    public List<Transicion> reconocer (char [] entrada){
+        
+        List<Transicion> ruta = new ArrayList<>();
+        //Estado actual = new Estado("x", false);
+        //this.actual = VistaPpal.automata.getEstadoInicial();
+        System.out.println(this.actual.getNombre());
+        for (int i = 0; i < entrada.length; i++) {
+            for (Transicion t: this.actual.transiciones) {
+      
+                if (entrada[i] == t.getSimbolo()) {
+                    
+                    this.actual = t.getSiguiente();
+                    ruta.add(t);
+                    
+                }
+            } 
+        } 
+        
+        return ruta;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

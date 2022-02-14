@@ -133,10 +133,10 @@ public class SeleccionInicial extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        List <Estado> estados = VistaPpal.automata.getEstados();
+        List<Estado> estados = VistaPpal.automata.getEstados();
         
-        VistaPpal.automata.setEstadoInicial(estados.get(jComboEstados.getSelectedIndex()));
-        
+        VistaPpal.automata.setEstadoInicial(estados.get(jComboEstados.getSelectedIndex() - 1));
+        System.out.println(VistaPpal.automata.getEstadoInicial().getNombre());
         IngresoTransiciones ingresoTransiciones = new IngresoTransiciones();
         ingresoTransiciones.setVisible(true);
         this.dispose();

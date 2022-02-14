@@ -4,6 +4,7 @@
  */
 package com.udea.co.practicaitdl.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ public class Estado {
     
     private String nombre;
     private boolean aceptacion;
-    public List<Transicion> transiciones;
+    public List<Transicion> transiciones = new ArrayList<>();
 
     public Estado(String valor, boolean aceptacion) {
         this.nombre = valor;

@@ -241,8 +241,11 @@ public class IngresoTransiciones extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnEntrarActionPerformed
 
     private void jBtnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnFinalizarActionPerformed
-        
-        VistaPpal.automata = VistaPpal.automata.simplificar();        
+        //VistaPpal.automata = VistaPpal.automata.simplificar();
+        PruebaAutomata prueba = new PruebaAutomata();
+        prueba.setVisible(true);
+        this.dispose();
+                
         
     }//GEN-LAST:event_jBtnFinalizarActionPerformed
 
