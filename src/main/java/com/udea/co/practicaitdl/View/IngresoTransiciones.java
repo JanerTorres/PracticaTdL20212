@@ -5,6 +5,7 @@
 package com.udea.co.practicaitdl.View;
 
 import com.udea.co.practicaitdl.Model.Estado;
+import com.udea.co.practicaitdl.Model.Transicion;
 import java.util.List;
 
 /**
@@ -223,6 +224,8 @@ public class IngresoTransiciones extends javax.swing.JFrame {
         char simbolo = VistaPpal.automata.getSimbolosEntrada().get(indSimbolos);
         // Guardamos la transición con los valores correspondientes
         VistaPpal.automata.agregarTransicion(estadoInicial, estadoFinal, simbolo);
+        
+        estadoInicial.agregarTransicion(new Transicion(estadoInicial, estadoFinal, simbolo));
     }
     
     public void actualizarInfo(){
@@ -238,7 +241,9 @@ public class IngresoTransiciones extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnEntrarActionPerformed
 
     private void jBtnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnFinalizarActionPerformed
-        // TODO add your handling code here:
+        
+        VistaPpal.automata = VistaPpal.automata.simplificar();        
+        
     }//GEN-LAST:event_jBtnFinalizarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

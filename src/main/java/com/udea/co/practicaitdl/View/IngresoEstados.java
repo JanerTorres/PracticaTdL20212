@@ -165,8 +165,8 @@ public class IngresoEstados extends javax.swing.JFrame {
 
     private void jBtnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnFinalizarActionPerformed
         // TODO add your handling code here:
-        IngresoTransiciones ingresoTransiciones = new IngresoTransiciones();
-        ingresoTransiciones.setVisible(true);
+        SeleccionInicial seleccionInicial = new SeleccionInicial();
+        seleccionInicial.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBtnFinalizarActionPerformed
 

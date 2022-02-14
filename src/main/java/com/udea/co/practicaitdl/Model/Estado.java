@@ -4,6 +4,8 @@
  */
 package com.udea.co.practicaitdl.Model;
 
+import java.util.List;
+
 /**
  *
  * @author USUARIO
@@ -12,6 +14,7 @@ public class Estado {
     
     private String nombre;
     private boolean aceptacion;
+    public List<Transicion> transiciones;
 
     public Estado(String valor, boolean aceptacion) {
         this.nombre = valor;
@@ -32,6 +35,10 @@ public class Estado {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    public void agregarTransicion(Transicion entrada){
+        transiciones.add(entrada);
     }
     
     
